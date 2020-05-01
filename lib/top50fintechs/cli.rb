@@ -14,6 +14,11 @@ def lists_categories
   puts "3. Fintech Hall of Fame of the 2010s"
 end
 
+#I want a class method that returns an array_with_index of all of the companies listed in each category
+# if 1. - top_50_fintechs_2019
+# if 2. - top_10_fintechs_2019
+# if 3. - hall_of_fame_2019
+
 def menu
   puts "Please enter the number of the category you are interested in learning about or type 'exit' to leave the program."
   puts "To return to a previous menu at any point please type 'back'"
@@ -22,11 +27,11 @@ def menu
     input = gets.strip
     case input
     when "1"
-      puts "Top 50 Fintech Compnies of 2019"
+      puts "Top 50 Fintech Compnies of 2019" #prints_category(input)
     when "2"
-      puts "Top 10 Fintech Companies of 2019"
+      puts "Top 10 Fintech Companies of 2019" #prints_category(input)
     when "3"
-      puts "Fintech Hall of Fame of the 2010s"
+      puts "Fintech Hall of Fame of the 2010s" #prints_category(input)
     when "back"
       lists_categories
     else
