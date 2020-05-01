@@ -14,8 +14,14 @@ def self.top_50_2019
 end
 
 def self.scrape_top_50
+  company_list = []
   html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019'))
-  html
+  array = html.css('div.margin-wrapper')
+  array.each_with_index do |company, index|
+    company_name = company.css('a').attribute('href').value
+    company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+end
+company_list
 end
 
 def self.top_10_2019
