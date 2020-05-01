@@ -24,11 +24,27 @@ end
 puts company_list
 end
 
-def self.top_10_2019
-  puts "company a - somewhere - something"
-  puts "company b - somewhere - something"
+def self.scrape_top_10
+  company_list = []
+  html = Nokogiri::HTML(open('https://thefintech50.com/the-hot-ten-2019'))
+  array = html.css('div.margin-wrapper')
+  array.each_with_index do |company, index|
+    company_name = company.css('a').attribute('href').value
+    company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+end
+puts company_list
 end
 
+def self.scrape_hall_of_fame
+  company_list = []
+  html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-hall-of-fame-1'))
+  array = html.css('div.margin-wrapper')
+  array.each_with_index do |company, index|
+    company_name = company.css('a').attribute('href').value
+    company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+end
+puts company_list
+end
 
 def self.hall_of_fame
   puts "it's working - a place - a thing"

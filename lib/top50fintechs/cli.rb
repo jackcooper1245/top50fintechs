@@ -23,10 +23,13 @@ def menu
     case input
     when "1"
       Top50fintechs::Company.scrape_top_50
+      puts "Please select a company you would like to know more about."
     when "2"
-      Top50fintechs::Company.top_10_2019
+      Top50fintechs::Company.scrape_top_10
+      puts "Please select a company you would like to know more about."
     when "3"
-      Top50fintechs::Company.hall_of_fame
+      Top50fintechs::Company.scrape_hall_of_fame
+      puts "Please select a company you would like to know more about."
     when "back"
       lists_categories
     when "exit"
