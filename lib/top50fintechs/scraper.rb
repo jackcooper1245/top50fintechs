@@ -5,15 +5,18 @@ require 'nokogiri'
 class Top50fintechs::Scraper
 
 def get_page_top_50_2019
-  Nokogiri::HTML('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019')
+  html = open('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019')
+  Nokogiri::HTML(html)
 end
 
 def get_page_top_10_2019
-  Nokogiri::HTML('https://thefintech50.com/the-hot-ten-2019')
+  html = open('https://thefintech50.com/the-hot-ten-2019')
+  Nokogiri::HTML(html)
 end
 
 def get_page_hall_of_fame
-  Nokogiri::HTML('https://thefintech50.com/the-fintech50-hall-of-fame-1')
+  html = open('https://thefintech50.com/the-fintech50-hall-of-fame-1')
+  Nokogiri::HTML(html)
 end
 
 def scrape_companies_list(index_url_method)
