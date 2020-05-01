@@ -7,6 +7,7 @@ class Top50fintechs::Scraper
 
 def get_page_top_50_2019
    Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019'))
+   binding.pry
 end
 
 def get_page_top_10_2019

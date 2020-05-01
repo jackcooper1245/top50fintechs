@@ -27,13 +27,13 @@ def menu
     input = gets.strip
     case input
     when "1"
-      puts "Top 50 Fintech Compnies of 2019" #prints_category(input)
+      Top50fintechs::Company.top_50_2019
     when "2"
-      puts "Top 10 Fintech Companies of 2019" #prints_category(input)
+      Top50fintechs::Company.top_10_2019
     when "3"
-      puts "Fintech Hall of Fame of the 2010s" #prints_category(input)
+      Top50fintechs::Company.hall_of_fame
     when "back"
-      lists_categories
+      lists_categories    
     else
       puts "I don't understand, please select a category or type 'exit' to exit the program"
    end
@@ -41,7 +41,7 @@ def menu
 end
 
 def goodbye
-  puts "See you again soon!"
+  puts "See you next time!"
 end
 
 end
