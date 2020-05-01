@@ -1,6 +1,6 @@
-require "top50fintechs_cli/version"
+require "top50fintechs/version"
 
-module Top50fintechsCli
+module Top50fintechs
   class Error < StandardError; end
   # Your code goes here...
 end
