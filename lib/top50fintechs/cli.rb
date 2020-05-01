@@ -24,19 +24,19 @@ def menu
     input = gets.strip
     case input
     when "1"
-      Top50fintechs::Company.scrape_top_50_2019
+      Top50fintechs::Scraper.scrape_top_50_2019
       puts "Please enter the number of the company you would like to know more about or type 'back' to return to the previous menu."
     when "2"
-      Top50fintechs::Company.scrape_top_50_2018
+      Top50fintechs::Scraper.scrape_top_50_2018
       puts "Please enter the number of the company you would like to know more about or type 'back' to return to the previous menu."
     when "3"
-      Top50fintechs::Company.scrape_top_50_2017
+      Top50fintechs::Scraper.scrape_top_50_2017
       puts "Please enter the number of the company you would like to know more about or type 'back' to return to the previous menu."
     when "4"
-      Top50fintechs::Company.scrape_top_50_2016
+      Top50fintechs::Scraper.scrape_top_50_2016
       puts "Please enter the number of the company you would like to know more about or type 'back' to return to the previous menu."
     when "5"
-      Top50fintechs::Company.scrape_top_50_2015
+      Top50fintechs::Scraper.scrape_top_50_2015
       puts "Please enter the number of the company you would like to know more about or type 'back' to return to the previous menu."
     when "back"
       lists_categories

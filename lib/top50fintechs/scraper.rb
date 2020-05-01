@@ -5,23 +5,61 @@ require 'nokogiri'
 
 class Top50fintechs::Scraper
 
-def self.get_page_top_50_2019
-   Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019'))
-end
 
-#def get_page_top_10_2019
-#  Nokogiri::HTML(open('https://thefintech50.com/the-hot-ten-2019'))
-#end
+  def self.scrape_top_50_2019
+    company_list = []
+    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019'))
+    array = html.css('div.margin-wrapper')
+    array.each_with_index do |company, index|
+      company_name = company.css('a').attribute('href').value
+      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+  end
+  puts company_list
+  end
 
-#def get_page_hall_of_fame
-#  Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-hall-of-fame-1'))
-#end
+  def self.scrape_top_50_2018
+    company_list = []
+    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2018-list'))
+    array = html.css('div.margin-wrapper')
+    array.each_with_index do |company, index|
+      company_name = company.css('a').attribute('href').value
+      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+  end
+  puts company_list
+  end
 
-#def scrape_companies_list(index_url_method)
-#company_list = self.index_url_method.css('div.sqs-gallery sqs-galler-design-grid')
-#company_list.each_with_index do |company, index|
-# puts "#{index + 1}. #{company.css('a').attribute('href').value}"
-#end
-#end
+  def self.scrape_top_50_2017
+    company_list = []
+    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech-50-2017'))
+    array = html.css('div.margin-wrapper')
+    array.each_with_index do |company, index|
+      company_name = company.css('a').attribute('href').value
+      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+  end
+  puts company_list
+  end
+
+  def self.scrape_top_50_2016
+    company_list = []
+    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech-50-2016'))
+    array = html.css('div.margin-wrapper')
+    array.each_with_index do |company, index|
+      company_name = company.css('a').attribute('href').value
+      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+  end
+  puts company_list
+  end
+
+
+  def self.scrape_top_50_2015
+    company_list = []
+    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech-50-2015'))
+    array = html.css('div.margin-wrapper')
+    array.each_with_index do |company, index|
+      company_name = company.css('a').attribute('href').value
+      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+  end
+  puts company_list
+  end
 
 end
