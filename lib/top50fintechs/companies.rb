@@ -21,7 +21,7 @@ def self.scrape_top_50
     company_name = company.css('a').attribute('href').value
     company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
 end
-company_list
+puts company_list
 end
 
 def self.top_10_2019
