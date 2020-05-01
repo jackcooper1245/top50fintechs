@@ -1,6 +1,2 @@
-require "top50fintechs/version"
-
-module Top50fintechs
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./top50fintechs/version"
+require_relative "./top50fintechs/cli"
