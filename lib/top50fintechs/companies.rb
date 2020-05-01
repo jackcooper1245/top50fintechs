@@ -8,11 +8,15 @@ class Top50fintechs::Company
 attr_accessor :company_name, :website, :twitter, :linkedin, :founders, :founded, :who_is_it_for, :keywords, :latest_funding, :total_funding, :offices, :company_moto, :bio
 
 def self.top_50_2019
-  html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019'))
-puts html.css('div').attribute('class= "sqs-gallery sqs-gallery-design-grid"')
+  puts "Apple"
+  puts "Revolut"
+  puts "Monzo"
 end
 
-
+def self.scrape_top_50
+  html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019'))
+  html
+end
 
 def self.top_10_2019
   puts "company a - somewhere - something"

@@ -5,7 +5,6 @@ def call
   puts "Please choose from the categories below."
   lists_categories
   menu
-  goodbye
 end
 
 def lists_categories
@@ -33,7 +32,9 @@ def menu
     when "3"
       Top50fintechs::Company.hall_of_fame
     when "back"
-      lists_categories    
+      lists_categories
+    when "exit"
+      goodbye
     else
       puts "I don't understand, please select a category or type 'exit' to exit the program"
    end
