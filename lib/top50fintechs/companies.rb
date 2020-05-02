@@ -7,6 +7,14 @@ class Top50fintechs::Companies
 
 attr_accessor :company_name, :website, :twitter, :linkedin, :founders, :founded, :who_is_it_for, :keywords, :latest_funding, :total_funding, :offices, :company_moto, :bio
 
+def self.new_from_scraper_top_50_2019
+  companies = []
+  Top50fintechs::Scraper.scrape_top_50_2019.each do |company|
+    companies << company
+  end
+  companies
+end
+
 
 #@@all = []
 
