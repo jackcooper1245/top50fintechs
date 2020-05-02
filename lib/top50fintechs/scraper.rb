@@ -26,7 +26,7 @@ end
 def scrape_companies
   array = []
   @doc.search('div[class=margin-wrapper]').each do |company|
-  array << company.search('a').attribute('href').value
+  array << company.search('a').attribute('href').value.split('/').join.gsub("-", " ").capitalize
   end
   puts array
 end
