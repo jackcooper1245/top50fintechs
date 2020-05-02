@@ -2,7 +2,7 @@ class Top50fintechs::CLI
 
 def call
   puts "Welcome to Top50FinTechs."
-  puts "Please choose from the categories below."
+  puts "Please choose from the companies below below."
   lists_categories
   menu
 end
@@ -19,26 +19,18 @@ def menu
       Top50fintechs::Scraper.scrape_top_50_2019
       puts " "
       enter_next
-      input = gets.strip
-      print_company(input)
     when "2"
       Top50fintechs::Scraper.scrape_top_10_2019
       puts " "
       enter_next
-      input = gets.strip
-      print_company(input)
     when "3"
       Top50fintechs::Scraper.scrape_top_50_2018
       puts " "
       enter_next
-      input = gets.strip
-      print_company(input)
     when "4"
       Top50fintechs::Scraper.scrape_top_50_2017
       puts " "
       enter_next
-      input = gets.strip
-      print_company(input)
     when "back"
       lists_categories
     when "exit"
@@ -64,9 +56,9 @@ end
 def lists_categories
   puts " "
   puts "1. Top 50 Fintech companies of 2019"
-#  puts "2. Top 10 Fintech companies of 2019"
-#  puts "3. Top 10 Fintech companies of 2018"
-#  puts "4. Top 10 Fintech companies of 2017"
+  puts "2. Top 50 Fintech companies of 2019"
+  puts "3. Top 50 Fintech companies of 2018"
+  puts "4. Top 50 Fintech companies of 2017"
   puts " "
 end
 
