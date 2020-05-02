@@ -16,7 +16,7 @@ def menu
     input = gets.strip
     case input
     when "1"
-      Top50fintechs::Scraper.scrape_top_50_2019
+      Top50fintechs::Companies.create_from_collection(Top50fintechs::Scraper.scrape_top_50_2019)
       puts " "
       enter_next
     when "2"
