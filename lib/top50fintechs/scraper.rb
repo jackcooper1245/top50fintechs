@@ -16,6 +16,7 @@ end
 
 def scrape
   scrape_details
+  scrape_companies
   @category
 end
 
@@ -24,11 +25,14 @@ def scrape_details
 end
 
 def scrape_companies
-  array = []
   @doc.search('div[class=margin-wrapper]').each do |company|
-  array << company.search('a').attribute('href').value.split('/').join.gsub("-", " ").capitalize
+    c = Company.new
+    c.name = company.search('a').attribute('href').value.split('/').join.gsub("-", " ").capitalize
+    c.company_url = "https://thefintech50.com#{company.search('a').attr('href').text}"
+
+    @category.add_companies(c)
   end
-  puts array
+  @category.companies
 end
 
 end

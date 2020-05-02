@@ -5,6 +5,6 @@ require 'nokogiri'
 
 class Company
 
-attr_accessor :name
+attr_accessor :name, :company_url
 
 end
