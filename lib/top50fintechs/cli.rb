@@ -20,15 +20,15 @@ def menu
       puts " "
       enter_next
     when "2"
-      Top50fintechs::Scraper.scrape_top_10_2019
+      Top50fintechs::Companies.create_from_collection(Top50fintechs::Scraper.scrape_top_10_2019)
       puts " "
       enter_next
     when "3"
-      Top50fintechs::Scraper.scrape_top_50_2018
+      Top50fintechs::Companies.create_from_collection(Top50fintechs::Scraper.scrape_top_50_2018)
       puts " "
       enter_next
     when "4"
-      Top50fintechs::Scraper.scrape_top_50_2017
+      Top50fintechs::Companies.create_from_collection(Top50fintechs::Scraper.scrape_top_50_2017)
       puts " "
       enter_next
     when "back"
