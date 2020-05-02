@@ -1,6 +1,6 @@
 class Category
 
-attr_accessor :title, :date, :category_url
+attr_accessor :title
 
 @@all = []
 

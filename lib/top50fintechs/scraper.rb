@@ -5,7 +5,7 @@ require 'nokogiri'
 
 class Scraper
 
-attr_accessor :category, :doc, :category_url
+attr_accessor :category, :doc, :category_url, :companies
 
 def initialize(category_url)
   @category = Category.new
@@ -19,8 +19,16 @@ def scrape
   @category
 end
 
-#def scrape_details
-#  title = doc.css('div.h2.white-space:prewrap').text
-#end
+def scrape_details
+  @category.title = @doc.search('h2')[2].text
+end
+
+def scrape_companies
+  array = []
+  @doc.search('div[class=margin-wrapper]').each do |company|
+  array << company.search('a').attribute('href').value
+  end
+  puts array
+end
 
 end
