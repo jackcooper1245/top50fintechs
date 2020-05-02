@@ -12,7 +12,18 @@ class Top50fintechs::Scraper
     array = html.css('div.margin-wrapper')
     array.each_with_index do |company, index|
       company_name = company.css('a').attribute('href').value
-      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+      company_list << "#{index + 1}. #{company_name.split('/').join.gsub("-", " ").capitalize}"
+  end
+  puts company_list
+  end
+
+  def self.scrape_top_10_2019
+    company_list = []
+    html = Nokogiri::HTML(open('https://thefintech50.com/the-hot-ten-2019'))
+    array = html.css('div.margin-wrapper')
+    array.each_with_index do |company, index|
+      company_name = company.css('a').attribute('href').value
+      company_list << "#{index + 1}. #{company_name.split('/').join.gsub("-", " ").capitalize}"
   end
   puts company_list
   end
@@ -23,7 +34,7 @@ class Top50fintechs::Scraper
     array = html.css('div.margin-wrapper')
     array.each_with_index do |company, index|
       company_name = company.css('a').attribute('href').value
-      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+      company_list << "#{index + 1}. #{company_name.split('/').join.gsub("-", " ").capitalize}"
   end
   puts company_list
   end
@@ -34,32 +45,14 @@ class Top50fintechs::Scraper
     array = html.css('div.margin-wrapper')
     array.each_with_index do |company, index|
       company_name = company.css('a').attribute('href').value
-      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
-  end
-  puts company_list
-  end
-
-  def self.scrape_top_50_2016
-    company_list = []
-    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech-50-2016'))
-    array = html.css('div.margin-wrapper')
-    array.each_with_index do |company, index|
-      company_name = company.css('a').attribute('href').value
-      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
+      company_list << "#{index + 1}. #{company_name.split('/').join.gsub("-", " ").capitalize}"
   end
   puts company_list
   end
 
 
-  def self.scrape_top_50_2015
-    company_list = []
-    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech-50-2015'))
-    array = html.css('div.margin-wrapper')
-    array.each_with_index do |company, index|
-      company_name = company.css('a').attribute('href').value
-      company_list << "#{index + 1}. #{company_name.split('/').join.capitalize}"
-  end
-  puts company_list
-  end
+
+
+
 
 end
