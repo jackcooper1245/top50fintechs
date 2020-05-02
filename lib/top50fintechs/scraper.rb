@@ -3,52 +3,24 @@ require 'pry'
 require 'open-uri'
 require 'nokogiri'
 
-class Top50fintechs::Scraper
+class Scraper
+
+attr_accessor :category, :doc, :category_url
+
+def initialize(category_url)
+  @category = Category.new
+  @category_url = category_url
+  @doc = Nokogiri::HTML(open(@category_url))
+end
 
 
-  def self.scrape_top_50_2019
-    company_list = []
-    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019'))
-    array = html.css('div.margin-wrapper')
-    array.each do |company|
-      company_name = company.css('a').attribute('href').value
-      company_hash = {:company_name => company_name.split('/').join.gsub("-", " ").capitalize}
-      company_list << company_hash
-  end
-  company_list
-  end
+def scrape
+  scrape_details
+  @category
+end
 
-  def self.scrape_top_10_2019
-    company_list = []
-    html = Nokogiri::HTML(open('https://thefintech50.com/the-hot-ten-2019'))
-    array.each do |company|
-      company_name = company.css('a').attribute('href').value
-      company_hash = {:company_name => company_name.split('/').join.gsub("-", " ").capitalize}
-      company_list << company_hash
-  end
-  company_list
-  end
-
-  def self.scrape_top_50_2018
-    company_list = []
-    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech50-2018-list'))
-    array.each do |company|
-      company_name = company.css('a').attribute('href').value
-      company_hash = {:company_name => company_name.split('/').join.gsub("-", " ").capitalize}
-      company_list << company_hash
-  end
-  company_list
-  end
-
-  def self.scrape_top_50_2017
-    company_list = []
-    html = Nokogiri::HTML(open('https://thefintech50.com/the-fintech-50-2017'))
-    array.each do |company|
-      company_name = company.css('a').attribute('href').value
-      company_hash = {:company_name => company_name.split('/').join.gsub("-", " ").capitalize}
-      company_list << company_hash
-  end
-  company_list
-  end
+#def scrape_details
+#  title = doc.css('div.h2.white-space:prewrap').text
+#end
 
 end

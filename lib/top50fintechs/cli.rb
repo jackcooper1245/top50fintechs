@@ -1,4 +1,4 @@
-class Top50fintechs::CLI
+class CLI
 
 def call
   puts "Welcome to Top50FinTechs."
