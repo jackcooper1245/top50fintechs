@@ -9,7 +9,7 @@ end
 
 
 def menu
-  puts "Please enter the number of the category you are interested in learning about or type 'exit' to leave the program."
+  puts "Please enter the number of the company you are interested in learning about or type 'exit' to leave the program."
   puts "To return to a previous menu at any point please type 'back'"
   input = ""
   while input != 'exit'
@@ -19,18 +19,26 @@ def menu
       Top50fintechs::Scraper.scrape_top_50_2019
       puts " "
       enter_next
+      input = gets.strip
+      print_company(input)
     when "2"
       Top50fintechs::Scraper.scrape_top_10_2019
       puts " "
       enter_next
+      input = gets.strip
+      print_company(input)
     when "3"
       Top50fintechs::Scraper.scrape_top_50_2018
       puts " "
       enter_next
+      input = gets.strip
+      print_company(input)
     when "4"
       Top50fintechs::Scraper.scrape_top_50_2017
       puts " "
       enter_next
+      input = gets.strip
+      print_company(input)
     when "back"
       lists_categories
     when "exit"
@@ -56,9 +64,9 @@ end
 def lists_categories
   puts " "
   puts "1. Top 50 Fintech companies of 2019"
-  puts "2. Top 10 Fintech companies of 2019"
-  puts "3. Top 10 Fintech companies of 2018"
-  puts "4. Top 10 Fintech companies of 2017"
+#  puts "2. Top 10 Fintech companies of 2019"
+#  puts "3. Top 10 Fintech companies of 2018"
+#  puts "4. Top 10 Fintech companies of 2017"
   puts " "
 end
 
