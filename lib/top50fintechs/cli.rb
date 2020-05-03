@@ -1,6 +1,5 @@
 class CLI
 
-BASE_PATH = "https://thefintech50.com/"
 
 def call
   puts "Welcome to Top50fintechs"
