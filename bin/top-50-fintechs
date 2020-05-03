@@ -2,4 +2,4 @@
 
 require "./lib/top50fintechs"
 
-Top50fintechs::CLI.new.call
+CLI.new.call
