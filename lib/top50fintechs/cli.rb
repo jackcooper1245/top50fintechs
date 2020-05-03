@@ -1,8 +1,9 @@
 class CLI
 
+BASE_PATH = "https://thefintech50.com/"
+
 def call
-  puts "Welcome to Top50FinTechs."
-  puts "Please choose from the companies below below."
+  puts "Welcome to Top50fintechs"
   lists_categories
   menu
 end
@@ -16,25 +17,25 @@ def menu
     input = gets.strip
     case input
     when "1"
-      Top50fintechs::Companies.create_from_collection(Top50fintechs::Scraper.scrape_top_50_2019)
-      puts " "
-      enter_next
+     make_companies('https://thefintech50.com/the-fintech50-2019-50-fintechs-to-watch-in-2019')
+     display_companies
+     enter_next
     when "2"
-      Top50fintechs::Companies.create_from_collection(Top50fintechs::Scraper.scrape_top_10_2019)
-      puts " "
+      make_companies('https://thefintech50.com/the-hot-ten-2019')
+      display_companies
       enter_next
     when "3"
-      Top50fintechs::Companies.create_from_collection(Top50fintechs::Scraper.scrape_top_50_2018)
-      puts " "
+      make_companies('https://thefintech50.com/the-fintech50-2018-list')
+      display_companies
       enter_next
     when "4"
-      Top50fintechs::Companies.create_from_collection(Top50fintechs::Scraper.scrape_top_50_2017)
-      puts " "
+      make_companies('https://thefintech50.com/the-fintech-50-2017')
+      display_companies
       enter_next
     when "back"
       lists_categories
     when "exit"
-      goodbye
+      goodbyea
     else
       error_assitance
    end
@@ -56,10 +57,21 @@ end
 def lists_categories
   puts " "
   puts "1. Top 50 Fintech companies of 2019"
-  puts "2. Top 50 Fintech companies of 2019"
+  puts "2. Top 10 Fintech companies of 2019"
   puts "3. Top 50 Fintech companies of 2018"
   puts "4. Top 50 Fintech companies of 2017"
   puts " "
+end
+
+def make_companies(category_url)
+    company_array = Scraper.new(category_url).scrape
+    Company.create_company_from_scrape(company_array)
+  end
+
+def display_companies
+  Company.all.each_with_index do |company, index|
+    puts "#{index + 1}. #{name}"
+end
 end
 
 end
