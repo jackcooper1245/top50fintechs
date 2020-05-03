@@ -35,7 +35,7 @@ def menu
     when "back"
       lists_categories
     when "exit"
-      goodbyea
+      goodbye
     else
       error_assitance
    end
@@ -48,6 +48,11 @@ end
 
 def enter_next
   puts "Please enter the number of the company you would like to know more about or type 'back' to return to the previous menu."
+input = gets.strip
+if input == 'back'
+  Company.destroy
+end
+lists_categories
 end
 
 def error_assitance
@@ -70,7 +75,7 @@ def make_companies(category_url)
 
 def display_companies
   Company.all.each_with_index do |company, index|
-    puts "#{index + 1}. #{name}"
+    puts "#{index + 1}. #{company.name}"
 end
 end
 
