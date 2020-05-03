@@ -83,10 +83,14 @@ end
 end
 
 def select_by_name(input)
+  if input == 'back'
+    Company.destroy
+    lists_categories
+  else
   @company_variable = Company.all.find {|c| input == c.name}
   @company_variable.company_url
 end
-
+end
 
 def scrape_by_name
   profile_array = []

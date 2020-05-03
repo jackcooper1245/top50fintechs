@@ -26,5 +26,4 @@ def scrape_companies_titles_and_urls
   array
 end
 
-
 end
