@@ -11,7 +11,7 @@ end
 def menu
   puts "Please enter the number of the company you are interested in learning about or type 'exit' to leave the program."
   puts "To return to a previous menu at any point please type 'back'"
-  input = ""
+  input = " "
   while input != 'exit'
     input = gets.strip
     case input
@@ -47,10 +47,9 @@ end
 
 def enter_next
   puts "Please enter the name of the company you would like to know more about or type 'back' to return to the previous menu."
-input = gets.strip
+  input = gets.strip
 if input == 'back'
   Company.destroy
-  lists_categories
 else
   select_by_name(input)
   scrape_by_name
@@ -70,6 +69,7 @@ def lists_categories
   puts " "
 end
 
+
 def make_companies(category_url)
     company_array = Scraper.new(category_url).scrape
     Company.create_company_from_scrape(company_array)
@@ -80,6 +80,8 @@ def display_companies
     puts "#{index + 1}. #{company.name}"
 end
 end
+
+
 
 def select_by_name(input)
   if input == 'back'
