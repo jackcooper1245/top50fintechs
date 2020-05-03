@@ -47,12 +47,14 @@ def goodbye
 end
 
 def enter_next
-  puts "Please enter the number of the company you would like to know more about or type 'back' to return to the previous menu."
+  puts "Please enter the name of the company you would like to know more about or type 'back' to return to the previous menu."
 input = gets.strip
 if input == 'back'
   Company.destroy
+  lists_categories
+else
+  select_by_name(input)
 end
-lists_categories
 end
 
 def error_assitance
@@ -78,5 +80,22 @@ def display_companies
     puts "#{index + 1}. #{company.name}"
 end
 end
+
+def select_by_name(input)
+  company_profile = Company.all.find {|c| input == c.name}
+  puts company_profile.company_url
+end
+
+
+def scrape_by_name(input)
+  company_profile = []
+  url = select_by_name(name).company_url
+  profile = Nokogiri::HTML(open(url))
+  profile_hash = {
+  :name => profile.css('h2')[0].text}
+  company_profile << profile_hash
+  puts company_profile
+end
+
 
 end
