@@ -54,6 +54,7 @@ if input == 'back'
   lists_categories
 else
   select_by_name(input)
+  scrape_by_name
 end
 end
 
@@ -82,20 +83,19 @@ end
 end
 
 def select_by_name(input)
-  company_profile = Company.all.find {|c| input == c.name}
-  puts company_profile.company_url
+  @company_variable = Company.all.find {|c| input == c.name}
+  @company_variable.company_url
 end
 
 
-def scrape_by_name(input)
-  company_profile = []
-  url = select_by_name(name).company_url
-  profile = Nokogiri::HTML(open(url))
+def scrape_by_name
+  profile_array = []
+  html = Nokogiri::HTML(open(@company_variable.company_url))
   profile_hash = {
-  :name => profile.css('h2')[0].text}
-  company_profile << profile_hash
-  puts company_profile
+    :name => html.css('h2')[0].text
+  }
+  profile_array << profile_hash
+  puts profile_array
 end
-
 
 end
