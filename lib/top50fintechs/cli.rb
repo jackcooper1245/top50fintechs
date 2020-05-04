@@ -89,7 +89,7 @@ def scrape_by_name
   profile_hash = {}
 
     profile_hash[:name] = html.css('h2')[0].text
-    #profile_hash[:founded] = html.css('p')[3]
+    profile_hash[:linkedin] = html.css('div.sqs-block-content p a').attribute('href')
     #profile_hash[:latest_funding] = html.css('p')[6]
     #profile_hash[:keywords] = html.css('p')[5]
     #profile_hash[:who_is_it_for] = html.css('p')[10]
@@ -117,7 +117,7 @@ def display_company
   company = scrape_by_name[0]
   puts "Name: #{company[:name]}"
   puts "-------------------------"
-  puts "Founded: "
+  puts "#{company[:linkedin]}"
 end
 
 end
