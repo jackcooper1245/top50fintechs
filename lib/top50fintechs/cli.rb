@@ -1,3 +1,4 @@
+require 'pry'
 class CLI
 
 
@@ -51,6 +52,7 @@ def enter_next
   input = gets.strip
 if input == 'back'
   Company.destroy
+  lists_categories
 else
   select_by_name(input)
   scrape_by_name
@@ -83,6 +85,7 @@ def display_companies
 end
 end
 
+
 def scrape_by_name
   profile_array = []
   html = Nokogiri::HTML(open(@company_variable.company_url))
@@ -90,6 +93,29 @@ def scrape_by_name
 
     profile_hash[:name] = html.css('h2')[0].text
     profile_hash[:website] = html.css('div.sqs-block-content p:first a').attribute('href')
+    html.css('.sqs-block-content p').each do |el|
+      if el.text.include?("Founders")
+        profile_hash[:founders] = el.text
+      elsif
+        el.text.include?("Founded")
+        profile_hash[:founded] = el.text
+      elsif
+        el.text.include?("Last funding")
+        profile_hash[:last_funding] = el.text
+      elsif
+        el.text.include?("HQ")
+          profile_hash[:HQ] = el.text
+      elsif
+        el.text.include?('Who is it for?')
+        profile_hash
+      end
+
+      html.css('.sqs-block-content[1] p').each do |el|
+        bio = []
+        bio << el.text
+        profile_hash[:bio] = bio
+      end
+    end
     #profile_hash[:founders] = html.css('div.sqs-block-content p') if html.css('div.sqs-block-content p').text.include?("Founders")
     #profile_hash[:keywords] = html.css('p')[5]
     #profile_hash[:who_is_it_for] = html.css('p')[10]
@@ -119,9 +145,10 @@ def display_company
   puts "Name: #{company[:name]}"
   puts "-------------------------"
   puts "Company website: #{company[:website]}"
-  puts " #{company[:founders]}"
-  puts " "
-  puts "-------------------------"
+  puts "#{company[:founders]}"
+  puts "#{company[:founded]}"
+  puts "#{company[:HQ]}"
+  puts "Bio: #{company[:bio]}"
 end
 
 end
