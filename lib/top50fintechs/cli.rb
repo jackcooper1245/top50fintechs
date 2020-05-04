@@ -93,6 +93,8 @@ def scrape_by_name
 
     profile_hash[:name] = html.css('h2')[0].text
     profile_hash[:website] = html.css('div.sqs-block-content p:first a').attribute('href')
+    profile_hash[:moto] = html.css('h2')[1].text
+
     html.css('.sqs-block-content p').each do |el|
       if el.text.include?("Founders")
         profile_hash[:founders] = el.text
@@ -106,25 +108,13 @@ def scrape_by_name
         el.text.include?("HQ")
           profile_hash[:HQ] = el.text
       elsif
-        el.text.include?('Who is it for?')
-        profile_hash
-      end
-
-      html.css('.sqs-block-content[1] p').each do |el|
-        bio = []
-        bio << el.text
-        profile_hash[:bio] = bio
+        el.text.include?('t:')
+        profile_hash[:twitter] = el.text
+      elsif
+        el.text.include?("Keyword")
+        profile_hash[:keywords] = el.text
       end
     end
-    #profile_hash[:founders] = html.css('div.sqs-block-content p') if html.css('div.sqs-block-content p').text.include?("Founders")
-    #profile_hash[:keywords] = html.css('p')[5]
-    #profile_hash[:who_is_it_for] = html.css('p')[10]
-    #profile_hash[:bio1] = html.css('div.sqs-block-content p')[10].text
-    #profile_hash[:bio2] = html.css('div.sqs-block-content p')[11].text
-    #profile_hash[:moto] = html.css('h2.white-space:pre-wrap')[1]
-    #profile_hash[:bio] = html.css('p')[2].text
-    #p#rofile_hash[:website] = html.css('p')[2].text
-    #pr#ofile_hash[:twitter] = html.css('p')[2].text
 
   profile_array << profile_hash
   profile_array
@@ -148,7 +138,9 @@ def display_company
   puts "#{company[:founders]}"
   puts "#{company[:founded]}"
   puts "#{company[:HQ]}"
-  puts "Bio: #{company[:bio]}"
+  puts "#{company[:twitter]}"
+  puts "Moto: #{company[:moto]}"
+  puts "#{company[:keywords]}"
 end
 
 end
