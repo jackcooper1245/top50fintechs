@@ -89,11 +89,12 @@ def scrape_by_name
   profile_hash = {}
 
     profile_hash[:name] = html.css('h2')[0].text
-    profile_hash[:linkedin] = html.css('div.sqs-block-content p a').attribute('href')
-    #profile_hash[:latest_funding] = html.css('p')[6]
+    profile_hash[:website] = html.css('div.sqs-block-content p:first a').attribute('href')
+    #profile_hash[:founders] = html.css('div.sqs-block-content p') if html.css('div.sqs-block-content p').text.include?("Founders")
     #profile_hash[:keywords] = html.css('p')[5]
     #profile_hash[:who_is_it_for] = html.css('p')[10]
-    #profile_hash[:HQ] = html.css('p')[11]
+    #profile_hash[:bio1] = html.css('div.sqs-block-content p')[10].text
+    #profile_hash[:bio2] = html.css('div.sqs-block-content p')[11].text
     #profile_hash[:moto] = html.css('h2.white-space:pre-wrap')[1]
     #profile_hash[:bio] = html.css('p')[2].text
     #p#rofile_hash[:website] = html.css('p')[2].text
@@ -117,7 +118,10 @@ def display_company
   company = scrape_by_name[0]
   puts "Name: #{company[:name]}"
   puts "-------------------------"
-  puts "#{company[:linkedin]}"
+  puts "Company website: #{company[:website]}"
+  puts " #{company[:founders]}"
+  puts " "
+  puts "-------------------------"
 end
 
 end

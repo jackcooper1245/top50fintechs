@@ -21,19 +21,6 @@ def self.create_company_from_scrape(company_array)
   end
 end
 
-def scrape_by_name(name)
-  company_profile = []
-  url = select_by_name(name).company_url
-  profile = Nokogiri::HTML(open(url))
-  profile_hash = {
-  :name => profile.css('h2')[0].text}
-  company_profile << profile_hash
-  company_profile
-end
-
-
-
-
 def self.all
   @@all
 end
