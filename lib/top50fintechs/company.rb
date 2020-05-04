@@ -31,9 +31,8 @@ def scrape_by_name(name)
   company_profile
 end
 
-def select_by_name(name)
-  self.companies.select {|c| name == c.name}
-end
+
+
 
 def self.all
   @@all
