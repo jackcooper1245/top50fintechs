@@ -32,6 +32,7 @@ def menu
       display_companies
       enter_next
     when "back"
+      Company.destroy
       lists_categories
     when "exit"
       goodbye
@@ -53,6 +54,7 @@ if input == 'back'
 else
   select_by_name(input)
   scrape_by_name
+  display_company
 end
 end
 
@@ -87,7 +89,6 @@ def scrape_by_name
   profile_hash = {}
 
     profile_hash[:name] = html.css('h2')[0].text
-    profile_hash[:founders] = html.css('p')[2]
     #profile_hash[:founded] = html.css('p')[3]
     #profile_hash[:latest_funding] = html.css('p')[6]
     #profile_hash[:keywords] = html.css('p')[5]
@@ -99,7 +100,7 @@ def scrape_by_name
     #pr#ofile_hash[:twitter] = html.css('p')[2].text
 
   profile_array << profile_hash
-  puts profile_array
+  profile_array
 end
 
 def select_by_name(input)
@@ -110,6 +111,13 @@ def select_by_name(input)
   @company_variable = Company.all.find {|c| input == c.name}
   @company_variable.company_url
 end
+end
+
+def display_company
+  company = scrape_by_name[0]
+  puts "Name: #{company[:name]}"
+  puts "-------------------------"
+  puts "Founded: "
 end
 
 end
