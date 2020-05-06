@@ -10,7 +10,6 @@ end
 
 
 def menu
-  puts "Please enter the number of the company you are interested in learning about or type 'exit' to leave the program."
   puts "To return to a previous menu at any point please type 'back'"
   input = " "
   while input != 'exit'
@@ -35,6 +34,9 @@ def menu
     when "back"
       Company.destroy
       lists_categories
+    when "return"
+      display_companies
+      enter_next
     when "exit"
       goodbye
     else
@@ -50,18 +52,13 @@ end
 def enter_next
   puts "Please enter the name of the company you would like to know more about or type 'back' to return to the previous menu."
   input = gets.strip
-if input == 'back'
-  Company.destroy
-  lists_categories
-else
   select_by_name(input)
   scrape_by_name
   display_company
 end
-end
 
 def error_assitance
-  puts "I don't understand, please select a category or type 'exit' to exit the program"
+  puts "I don't understand, please try again or type 'exit' to exit the program"
 end
 
 def lists_categories
@@ -71,6 +68,8 @@ def lists_categories
   puts "3. Top 50 Fintech companies of 2018"
   puts "4. Top 50 Fintech companies of 2017"
   puts " "
+  puts "Please enter the number of the company you are interested in learning about or type 'exit' to leave the program."
+
 end
 
 
@@ -141,6 +140,8 @@ def display_company
   puts "#{company[:twitter]}"
   puts "Moto: #{company[:moto]}"
   puts "#{company[:keywords]}"
+  puts "-------------------------"
+  puts "To return to the list please enter 'return'"
 end
 
 end
