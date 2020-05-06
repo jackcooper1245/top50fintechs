@@ -68,7 +68,7 @@ def lists_categories
   puts "3. Top 50 Fintech companies of 2018"
   puts "4. Top 50 Fintech companies of 2017"
   puts " "
-  puts "Please enter the number of the company you are interested in learning about or type 'exit' to leave the program."
+  puts "Please enter the number of the category you are interested in learning about or type 'exit' to leave the program."
 
 end
 
@@ -138,7 +138,7 @@ def display_company
   puts "#{company[:founded]}"
   puts "#{company[:HQ]}"
   puts "#{company[:twitter]}"
-  puts "Moto: #{company[:moto]}"
+  puts "Motto: #{company[:moto]}"
   puts "#{company[:keywords]}"
   puts "-------------------------"
   puts "To return to the list please enter 'return'"
