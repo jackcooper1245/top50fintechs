@@ -21,6 +21,12 @@ def self.create_company_from_scrape(company_array)
   end
 end
 
+def self.print_all
+  self.all.each_with_index do |company, index|
+    puts "#{index + 1}. #{company.name}"
+end
+end
+
 def self.all
   @@all
 end

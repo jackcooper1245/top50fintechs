@@ -1,8 +1,6 @@
 # Top50fintechs
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/top50fintechs`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Top50fintechs. Here you will be able to easily browse the best companies the Fintech sector has to offer. You will have access to some preliminary info, directions to the companies personal site and a few other bits and bobs. Please follow the instructions carefully and enjoy!
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run the Gem please enter: $ Ruby/bin/top-50-fintechs 
 
 ## Development
 
