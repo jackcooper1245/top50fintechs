@@ -52,9 +52,11 @@ end
 def enter_next
   puts "Please enter the name of the company you would like to know more about or type 'back' to return to the previous menu."
   input = gets.strip
-  select_by_name(input)
+  
+  if select_by_name(input)
   scrape_by_name
   display_company
+end
 end
 
 def error_assitance
@@ -92,8 +94,6 @@ def scrape_by_name
 
     profile_hash[:name] = html.css('h2')[0].text
     profile_hash[:website] = html.css('div.sqs-block-content p:first a').attribute('href')
-    profile_hash[:moto] = html.css('h2')[1].text
-
     html.css('.sqs-block-content p').each do |el|
       if el.text.include?("Founders")
         profile_hash[:founders] = el.text
@@ -138,7 +138,6 @@ def display_company
   puts "#{company[:founded]}"
   puts "#{company[:HQ]}"
   puts "#{company[:twitter]}"
-  puts "Motto: #{company[:moto]}"
   puts "#{company[:keywords]}"
   puts "-------------------------"
   puts "To return to the list please enter 'return'"
