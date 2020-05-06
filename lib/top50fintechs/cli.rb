@@ -35,7 +35,7 @@ def menu
       Company.destroy
       lists_categories
     when "return"
-      display_companies
+      Company.print_all
       enter_next
     when "exit"
       goodbye
@@ -52,11 +52,15 @@ end
 def enter_next
   puts "Please enter the name of the company you would like to know more about or type 'back' to return to the previous menu."
   input = gets.strip
-
-  if select_by_name(input)
-  scrape_by_name
-  display_company
-end
+  if input == "back"
+    lists_categories
+  elsif
+    input == "exit"
+    lists_categories
+  elsif
+    Scraper.scrape_by_name(input)
+    display_company(input)
+  end
 end
 
 def error_assitance
@@ -80,51 +84,9 @@ def make_companies(category_url)
   Company.create_company_from_scrape(company_array)
 end
 
-def scrape_by_name
-  profile_array = []
-  html = Nokogiri::HTML(open(@company_variable.company_url))
-  profile_hash = {}
 
-  profile_hash[:name] = html.css('h2')[0].text
-  profile_hash[:website] = html.css('div.sqs-block-content p:first a').attribute('href')
-  
-  html.css('.sqs-block-content p').each do |el|
-    if el.text.include?("Founders")
-      profile_hash[:founders] = el.text
-    elsif
-      el.text.include?("Founded")
-      profile_hash[:founded] = el.text
-    elsif
-      el.text.include?("Last funding")
-      profile_hash[:last_funding] = el.text
-    elsif
-      el.text.include?("HQ")
-      profile_hash[:HQ] = el.text
-    elsif
-      el.text.include?('t:')
-      profile_hash[:twitter] = el.text
-    elsif
-      el.text.include?("Keyword")
-      profile_hash[:keywords] = el.text
-    end
-  end
-
-  profile_array << profile_hash
-  profile_array
-end
-
-def select_by_name(input)
-  if input == 'back'
-    Company.destroy
-      lists_categories
-  else
-   @company_variable = Company.all.find {|c| input == c.name}
-   @company_variable.company_url
-  end
-end
-
-def display_company
-  company = scrape_by_name[0]
+def display_company(input)
+  company = Scraper.scrape_by_name(input)[0]
   puts "Name: #{company[:name]}"
   puts "-------------------------"
   puts "Company website: #{company[:website]}"

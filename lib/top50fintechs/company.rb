@@ -27,6 +27,12 @@ def self.print_all
 end
 end
 
+def self.select_by_name(input)
+   company_variable = Company.all.find {|c| input == c.name}
+   company_variable.company_url
+end
+
+
 def self.all
   @@all
 end
