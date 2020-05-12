@@ -53,6 +53,7 @@ def enter_next
   puts "Please enter the name of the company you would like to know more about or type 'back' to return to the previous menu."
   input = gets.strip
   if input == "back"
+    Company.destroy
     lists_categories
   elsif
     input == "exit"
@@ -98,5 +99,6 @@ def display_company(input)
   puts "-------------------------"
   puts "To return to the list please enter 'return'"
 end
+
 
 end

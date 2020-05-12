@@ -5,7 +5,7 @@ require 'nokogiri'
 
 class Company
 
-attr_accessor :name, :company_url, :category
+attr_accessor :name, :company_url
 
 @@all = []
 
