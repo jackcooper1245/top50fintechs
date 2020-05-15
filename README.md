@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-To run the Gem please enter: $ Ruby/bin/top-50-fintechs
+To run the Gem please enter: $ ruby bin/top-50-fintechs
 
 ## Development
 
