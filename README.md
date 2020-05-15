@@ -4,8 +4,6 @@ Welcome to Top50fintechs. Here you will be able to easily browse the best compan
 
 ## Installation
 
-$ git clone git@github.com:jackcooper1245/top50fintechs.git
-
 Add this line to your application's Gemfile:
 
 ```ruby
